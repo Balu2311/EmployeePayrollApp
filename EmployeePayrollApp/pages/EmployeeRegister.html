@@ -152,12 +152,24 @@
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                     </select>
+                    <error id="errorDate" class="error" name="errorDate"></error>
                 </div>
             </div>
-            
+            <!--Buttons Notes-->
+            <div class="form_input_content">
+                <label class="form_input_label text" for="notes">Notes</label>
+                <textarea rows="4" class="input" placeholder="Enter Comments" id="notes" style="resize: none;" required></textarea>
+            </div>
+            <div class="button_container">
+                <a href="#" class="button" style="text-decoration: none;background-color: red;text-align: center;color:white">Cancel</a>
+                <div class="buttons">
+                    <button type="submit" class="submit_button button" id="submitButton">Submit</button>
+                    <button type="reset" class="reset_button button">Reset</button>
+                </div>
+            </div>
         </form>
     </div>
-    
-    <script type="text/javacript" src="../js/EmployeeRegister.js"></script>
+    <script type="text/javascript" src="../js/EmployeePayrollData.js"></script>
+    <script type="text/javascript" src="../js/EmployeeRegister.js"></script>
 </body>
 </html>

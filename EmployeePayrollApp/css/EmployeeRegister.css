@@ -41,3 +41,68 @@ body
 {
     color: darkgrey;
 }
+/*Create Form*/
+.InputForm
+{
+    min-height: calc(100%-100px);
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid   green;
+}
+.form{
+    width: 65%;
+    padding: 44px 60px;
+    background-color: white;
+    box-shadow: 5px solid lightgray;
+    border-radius: 8px;
+    margin-top: 5%;
+}
+.form_header
+{
+    letter-spacing: 0px;
+    color: darkslategray;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+.form_input_content
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+
+}
+.form_input_label
+{
+    min-width: 140px;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+.text
+{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+    opacity: 1;
+    color: #42515f;
+    
+}
+.input{
+    width: 100%;
+    padding: 12px;
+    border-radius: 15px;
+    border: 1px solid white;
+    background-color: lightcyan;
+    outline: none;
+}
+.input:focus
+{
+    
+    border:1px solid #42515f;
+}

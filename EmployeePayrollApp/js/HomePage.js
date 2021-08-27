@@ -52,4 +52,5 @@ for(const dept of deptArr)
     deptHtml = `${deptHtml}<span class="dept_label">${dept}</span>`;
 }
 return deptHtml;
+
 }

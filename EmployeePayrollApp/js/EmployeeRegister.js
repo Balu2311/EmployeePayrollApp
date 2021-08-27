@@ -121,3 +121,31 @@ const getSelectedValues=(proertyValue)=>
     });
     return selectedItems;
 }
+//RESET FORM
+const resetForm=() =>
+{
+  setValue('#empName','');
+  unsetSelectedValues('[name=profile]');
+  unsetSelectedValues('[name=gender]');
+  unsetSelectedValues('[name=dept]');
+  setValue('#salary','');
+  getById('salaryOutput').value = 450000;
+  getById('errorDate').innerHTML = "";
+  setValue('#notes','');
+  getById('day').value = 1;
+  getById('month').value = 'Jan';
+  getById('year').value = 2021;
+  alert("The Form has been reseted");
+}
+//Methods for reset
+const setValue=(id,value)=>{
+    const element = document.querySelector(id);
+    element.value=value;
+  }
+  
+const unsetSelectedValues=(property)=>{
+    let allItems = document.querySelectorAll(property);
+    allItems.forEach(item=>{
+        item.checked=false;
+    });
+}

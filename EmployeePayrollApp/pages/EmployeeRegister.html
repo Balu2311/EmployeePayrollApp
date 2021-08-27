@@ -28,6 +28,7 @@
             <div class="form_input_content">
                 <label class="form_input_label text" for="empName">Employee Name</label>
                 <input type="text" class="input" name="empName" id="empName" placeholder="Enter Name Here" required>
+                <error class="error" id="errorName"></error>
             </div>
             <!--UC3 pics-->
             <div class="form_input_content">
@@ -97,7 +98,7 @@
             <!--UC5 Start date-->
             <div class="form_input_content">
                 <label class="form_input_label text" for="startDate">Start Date</label>
-                <div>
+                <div id="date">
                     <select id="day" name="day">
                         <option value="1">1</option>
                         <option value="2">2</option>

@@ -1,17 +1,13 @@
+let employeePayrollList ;
 window.addEventListener('DOMContentLoaded', (event) => {
+    employeePayrollList = getDataFromLocalStorage();
+    document.getElementById('emp_count').innerHTML = employeePayrollList.length;
     createTableContents();
 });
-let employeePayrollList = [
-    {
-        _empName:'B N Reddy V',
-        _empGender:'Male',
-        _empDept:['Soft','Engineer'],
-        _empSalary:'450000',
-        _startDate:'23 Dec 2019',
-        _notes:'',
-        _empProfilePic:'../assets/profile-images/Ellipse -3.png'
-    }
-]
+let getDataFromLocalStorage = () =>
+{
+    return localStorage.getItem("EmployeePayrollList")?JSON.parse(localStorage.getItem("EmployeePayrollList")):[];
+}
 let createTableContents = () =>
 {
     const tableHeader = `<tr>

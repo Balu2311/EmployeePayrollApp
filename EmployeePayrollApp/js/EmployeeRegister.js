@@ -41,8 +41,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             errorDate.innerHTML=e;
         }
     });
-
-
 });
 //UC 11To14 
 const save=()=>
@@ -51,6 +49,7 @@ const save=()=>
   {
     let employeePayrollData=createEmployeePayroll();
     createAndUpdateStorage(employeePayrollData);
+    resetForm();
   }
   catch(e)
   {
@@ -104,12 +103,6 @@ function createAndUpdateStorage(employeePayrollData)
   localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
 }
 
-const setTextValue=(id,value) =>
-{
-  const element=getById(id);
-  element.textContent=value;
-}
-
 const getSelectedValues=(proertyValue)=>
 {
   let allItems=document.querySelectorAll(proertyValue);
@@ -135,7 +128,6 @@ const resetForm=() =>
   getById('day').value = 1;
   getById('month').value = 'Jan';
   getById('year').value = 2021;
-  alert("The Form has been reseted");
 }
 //Methods for reset
 const setValue=(id,value)=>{

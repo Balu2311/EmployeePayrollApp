@@ -115,6 +115,9 @@ body
     border-radius: 50%;
     width: 30px;
 }
+.profile:hover{
+    transform: scale(1.1);
+}
 .table
 {
     width: 100%;
@@ -164,6 +167,5 @@ td img{
     font-size: 14px;
     display: inline-block;
     margin-bottom: 8px;
-    margin-left: 2px;
-    
+    margin-left: 2px;  
 }

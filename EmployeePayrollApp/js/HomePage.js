@@ -1,7 +1,18 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     createTableContents();
 });
-const createTableContents = () =>
+let employeePayrollList = [
+    {
+        _empName:'B N Reddy V',
+        _empGender:'Male',
+        _empDept:['Soft','Engineer'],
+        _empSalary:'450000',
+        _startDate:'23 Dec 2019',
+        _notes:'',
+        _empProfilePic:'../assets/profile-images/Ellipse -3.png'
+    }
+]
+let createTableContents = () =>
 {
     const tableHeader = `<tr>
     <th>Image</th>
@@ -12,35 +23,33 @@ const createTableContents = () =>
     <th>Start date</th>
     <th>Actions</th>
 </tr>`;
-    const tableContents = `${tableHeader}<tr>
-    <td><img class="profile" src="../assets/profile-images/Ellipse -5.png" /></td>
-    <td>B N Reddy V</td>
-    <td>Male</td>
-    <td>
-        <span class="dept_label">Soft</span>
-        <span class="dept_label">Engineer</span>
-    </td>
-    <td>₹4500000</td>
-    <td>23 Dec 2019</td>
-    <td>
-        <img src="../assets/icons/delete-black-18dp.svg" alt="delete" />
-        <img src="../assets/icons/create-black-18dp.svg" alt="edit" />
-    </td>
-</tr>
-<tr>
-    <td><img class="profile" src="../assets/profile-images/Ellipse -5.png" /></td>
-    <td>B N Reddy V</td>
-    <td>Male</td>
-    <td>
-        <span class="dept_label">Soft</span>
-        <span class="dept_label">Engineer</span>
+let tableContents = `${tableHeader}`;
+for(const emp of employeePayrollList)
+{
+    tableContents = `${tableContents}<tr>
+        <td><img class="profile" src="${emp._empProfilePic}" /></td>
+        <td>${emp._empName}</td>
+        <td>${emp._empGender}</td>
+        <td>
+        ${getDept(emp._empDept)}
         </td>
-        <td>₹4500000</td>
-        <td>23 Dec 2019</td>
+        <td>${emp._empSalary}</td>
+        <td>${stringifyDate(emp._startDate)}</td>
         <td>
             <img src="../assets/icons/delete-black-18dp.svg" alt="delete" />
             <img src="../assets/icons/create-black-18dp.svg" alt="edit" />
         </td>
-</tr>`;
-    document.getElementById('display_container').innerHTML = tableContents;
+    </tr>`;
+}
+
+document.getElementById('display_container').innerHTML = tableContents;
+}
+let getDept = (deptArr) =>
+{
+let deptHtml = '';
+for(const dept of deptArr)
+{
+    deptHtml = `${deptHtml}<span class="dept_label">${dept}</span>`;
+}
+return deptHtml;
 }

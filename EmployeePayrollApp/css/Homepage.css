@@ -5,6 +5,8 @@ body
 {
     margin: 0;
     height: 100%;
+    width: 100%;
+    background-color: #f7f7f7;
     
 }
 .header
@@ -74,6 +76,8 @@ body
     background-color: #f7f7f7;
     padding: 30px 0 10px;
     box-sizing: border-box;
+    width: 95%;
+    margin: 0 auto;
 }
 .header_container
 {
@@ -81,7 +85,7 @@ body
     flex-direction: row;
     justify-content:space-between;
     align-items: center;
-    width: 80%;
+    width: 98%;
     margin: 0 auto;
     padding-bottom: 25px;
 }
@@ -160,4 +164,5 @@ td img{
     font-size: 14px;
     display: inline-block;
     margin-bottom: 8px;
+    margin-left: 2px;
 }

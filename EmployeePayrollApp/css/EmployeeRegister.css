@@ -123,6 +123,21 @@ body
     border-radius: 50%;
    
 }
+/*UC4 gen sal dep */
+.form_checkboxes
+{
+    align-items: center;
+    min-width: 100px;
+}
+.form_checkboxes>label
+{
+    margin: 2px;
+    
+}
+.salary
+{
+   width: 90%;
+}
 @media only screen and (max-width: 1200px) {
     .form_input_label
     {

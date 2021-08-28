@@ -84,14 +84,30 @@ let getDept = (deptArr) =>
 //Delete employee
 let deleteEmployee = (employee) =>
 {
-    let empData  = employeePayrollList.find(x => x._empName == employee.id);
+    let empData  = employeePayrollList.find(x => x.id == employee.id);
     if(!empData)
         return;
-    const index = employeePayrollList.map(x => x._empName).indexOf(empData._empName);
+    const index = employeePayrollList.map(x => x.id).indexOf(empData.id);
     employeePayrollList.splice(index,1);
-    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
-    document.getElementById('emp_count').innerHTML = employeePayrollList.length;
-    createTableContents();
+    if(siteProperties.use_local_storage.match("true"))
+    {
+        localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
+        document.getElementById('emp_count').innerHTML = employeePayrollList.length;
+        createTableContents();
+    }
+    else{
+        const deleteURL=siteProperties.server_url+empData.id.toString();
+        makeServiceCall("DELETE",deleteURL,false)
+        .then(responseText=>
+            {
+                createInnerHtml();
+            })
+            .catch(error=>
+                {
+                    console.log("DELETE Error Status:"+JSON.stringify(error));
+                });
+    }
+    
 }
 //Update Employee
 let updateEmployee = (employee) =>

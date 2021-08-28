@@ -1,5 +1,5 @@
 {
-    "EmployeePayrollDB": [
+  "EmployeePayrollDB": [
       {
         "id": 1,
         "_name": "BNReddy",
@@ -61,7 +61,21 @@
         "_salary": "419100",
         "_notes": "Bussinesman",
         "_startDate": "20 August 2021"
+      },
+      {
+        "_name": "Balureddy",
+        "_profilePic": "../assets/profile-images/Ellipse -3.png",
+        "_gender": "male",
+        "_department": [
+          "hr",
+          "sales",
+          "finance",
+          "engineer"
+        ],
+        "_salary": "503000",
+        "_notes": "frsdfds",
+        "_startDate": "1 Aug 2021",
+        "id": 6
       }
     ]
-  }
-  
+}

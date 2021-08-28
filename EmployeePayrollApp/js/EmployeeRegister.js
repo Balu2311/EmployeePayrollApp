@@ -43,8 +43,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             errorDate.innerHTML=e;
         }
     });
-//update
-checkForUpdate();
+    //update
+   checkForUpdate();
 });
 let checkForUpdate = () =>
 {
@@ -64,22 +64,51 @@ const save=(event)=>
   try
   {
     setEmpObj();
-    createAndUpdateStorage();
-    resetForm();
-    window.location.replace(siteProperties.home_page);
+    if(siteProperties.use_local_storage.match("true"))
+    {
+      createAndUpdateStorage();
+      resetForm();
+      window.location.replace(siteProperties.home_page);
+    }
+    else{
+      createOrUpdateEmployeePayrollFromServer();
+      window.location.replace(siteProperties.home_page);
+    }
   }
   catch(e)
   {
     return;
   }
 }
+const createOrUpdateEmployeePayrollFromServer=()=>
+{
+  let postURL=siteProperties.server_url;
+  let methodCall="POST";
+  if(isUpdate)
+  {
+    methodCall="PUT";
+    postURL=postURL+empObj.id.toString();
+  }
+  makeServiceCall(methodCall,postURL,true,empObj)
+ .then(responseText=>
+  {
+      resetForm();
+    
+  })
+  .catch(error=>
+    {
+      throw error;
+    });
+}
 const setEmpObj = () =>
-{   empObj.id = createNewEmployeeId();
-    empObj._empName = getById('empName').value;
-    empObj._empProfilePic = getSelectedValues('[name=profile]').pop();
-    empObj._empGender = getSelectedValues('[name=gender]').pop();
-    empObj._empDept=getSelectedValues('[name=dept]');
-    empObj._empSalary=getById('salary').value;
+{
+  if(!isUpdate && siteProperties.use_local_storage.match("true"))
+      empObj.id = createNewEmployeeId();
+    empObj._name = getById('empName').value;
+    empObj._profilePic = getSelectedValues('[name=profile]').pop();
+    empObj._gender = getSelectedValues('[name=gender]').pop();
+    empObj._department=getSelectedValues('[name=dept]');
+    empObj._salary=getById('salary').value;
     empObj._notes=getById('notes').value;
     let date=`${getById('day').value} ${getById('month').value} ${getById('year').value}`;
     empObj._startDate = date;

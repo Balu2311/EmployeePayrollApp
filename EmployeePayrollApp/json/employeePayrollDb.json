@@ -1,0 +1,66 @@
+{
+    "EmployeePayrollDB": [
+      {
+        "id": 1,
+        "_name": "BNReddy",
+        "_gender": "male",
+        "_department": [
+          "Engineering",
+          "Finance"
+        ],
+        "_salary": "500000",
+        "_startDate": "15 August 2021",
+        "_note": "Hero",
+        "_profilePic": "../assests/profile-images/Ellipse -2.png"
+      },
+      {
+        "id": 2,
+        "_name": "Ramu",
+        "_gender": "male",
+        "_department": [
+          "Engineering"
+        ],
+        "_salary": "500000",
+        "_startDate": "20 August 2021",
+        "_note": "MLA",
+        "_profilePic": "../assests/profile-images/Ellipse -3.png"
+      },
+      {
+        "_name": "Navya",
+        "_gender": "female",
+        "_department": [
+          "Sales"
+        ],
+        "_salary": "400000",
+        "_startDate": "12 August 2021",
+        "_note": "DR",
+        "_profilePic": "../assests/profile-images/Ellipse -1.png",
+        "id": 3
+      },
+      {
+        "id": "4",
+        "_name": "Kavya",
+        "_profilePic": "../assests/profile-images/Ellipse -4.png",
+        "_gender": "Female",
+        "_department": [
+          "Finance",
+          "Engineer"
+        ],
+        "_salary": "424400",
+        "_notes": "Student",
+        "_startDate": "18 August 2021"
+      },
+      {
+        "id": "5",
+        "_name": "Balu",
+        "_profilePic": "../assests/profile-images/Ellipse -4.png",
+        "_gender": "male",
+        "_department": [
+          "Engineer"
+        ],
+        "_salary": "419100",
+        "_notes": "Bussinesman",
+        "_startDate": "20 August 2021"
+      }
+    ]
+  }

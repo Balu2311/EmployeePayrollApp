@@ -50,6 +50,7 @@ for(const dept of deptArr)
 }
 return deptHtml;
 }
+
 //Delete employee
 let deleteEmployee = (employee) =>
 {

@@ -106,7 +106,4 @@ class EmployeePayrollData
     {
         return `Id = ${this._empId} Name = ${this._empName} Gender = ${this._empGender} Profile Pic = ${this._empProfilePic} Dept = ${this._empDept} Salary = ${this._empSalary} Date = ${this._startDate} Notes = ${this._notes}`;
     }
-
-
-    
 }

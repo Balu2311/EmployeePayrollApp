@@ -1,13 +1,42 @@
 let employeePayrollList ;
 window.addEventListener('DOMContentLoaded', (event) => {
-    employeePayrollList = getDataFromLocalStorage();
+    if(siteProperties.use_local_storage.match("true"))
+    {
+        getDataFromLocalStorage();
+    }
+    else
+    {
+        getEmployeePayrollDataFromServer();
+    }
+    
+});
+
+const processEmployeePayrollDataResponse=()=>
+{
     document.getElementById('emp_count').innerHTML = employeePayrollList.length;
     createTableContents();
     localStorage.removeItem('editEmp');
-});
+}
 let getDataFromLocalStorage = () =>
 {
-    return localStorage.getItem("EmployeePayrollList")?JSON.parse(localStorage.getItem("EmployeePayrollList")):[];
+    localStorage.getItem("EmployeePayrollList")?JSON.parse(localStorage.getItem("EmployeePayrollList")):[];
+    processEmployeePayrollDataResponse();
+}
+
+const   getEmployeePayrollDataFromServer = () =>
+{
+    makeServiceCall("GET",siteProperties.server_url,true)
+    .then(responseText=>
+        {
+            employeePayrollList=JSON.parse(responseText);
+            processEmployeePayrollDataResponse();
+        })
+        .catch(error=>
+        {
+            console.log("GET Error status: "+JSON.stringify(error));
+            employeePayrollList=[];
+            processEmployeePayrollDataResponse();
+        });
 }
 let createTableContents = () =>
 {
@@ -21,35 +50,36 @@ let createTableContents = () =>
     <th>Actions</th>
 </tr>`;
 let tableContents = `${tableHeader}`;
-for(const emp of employeePayrollList)
-{
-    tableContents = `${tableContents}<tr>
-        <td><img class="profile" src="${emp._empProfilePic}" /></td>
-        <td>${emp._empName}</td>
-        <td>${emp._empGender}</td>
-        <td>
-        ${getDept(emp._empDept)}
-        </td>
-        <td>${emp._empSalary}</td>
-        <td>${stringifyDate(emp._startDate)}</td>
-        <td>
-            <img src="../assets/icons/delete-black-18dp.svg" alt="delete" />
-            <img src="../assets/icons/create-black-18dp.svg" alt="edit" />
-        </td>
-    </tr>`;
-}
-
-document.getElementById('display_container').innerHTML = tableContents;
+    for(const emp of employeePayrollList)
+    {
+        tableContents = `${tableContents}<tr>
+            <td><img class="profile" src="${emp._profilePic}" /></td>
+            <td>${emp._name}</td>
+            <td>${emp._gender}</td>
+            <td>
+            ${getDept(emp._department)}
+            </td>
+            <td>${emp._salary}</td>
+            <td>${stringifyDate(emp._startDate)}</td>
+            <td>
+                <img id="${emp.id}" src="../assets/icons/delete-black-18dp.svg" class="profile" onclick="deleteEmployee(this)" alt="delete" />
+                <img id="${emp.id}" src="../assets/icons/create-black-18dp.svg" class="profile" onclick="updateEmployee(this)" alt="edit" />
+            </td>
+        </tr>`;
+    }
+    
+    document.getElementById('display_container').innerHTML = tableContents;
 }
 let getDept = (deptArr) =>
 {
-let deptHtml = '';
-for(const dept of deptArr)
-{
-    deptHtml = `${deptHtml}<span class="dept_label">${dept}</span>`;
+    let deptHtml = '';
+    for(const dept of deptArr)
+    {
+        deptHtml = `${deptHtml}<span class="dept_label">${dept}</span>`;
+    }
+    return deptHtml;
 }
-return deptHtml;
-}
+
 
 //Delete employee
 let deleteEmployee = (employee) =>

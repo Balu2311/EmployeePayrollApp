@@ -48,5 +48,16 @@ for(const dept of deptArr)
     deptHtml = `${deptHtml}<span class="dept_label">${dept}</span>`;
 }
 return deptHtml;
-
+}
+//Delete employee
+let deleteEmployee = (employee) =>
+{
+    let empData  = employeePayrollList.find(x => x._empName == employee.id);
+    if(!empData)
+        return;
+    const index = employeePayrollList.map(x => x._empName).indexOf(empData._empName);
+    employeePayrollList.splice(index,1);
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
+    document.getElementById('emp_count').innerHTML = employeePayrollList.length;
+    createTableContents();
 }
